@@ -15,16 +15,7 @@ pool.connect((err, client, release) => {
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (
-        ["http://localhost:5173", "http://localhost:3000"].includes(origin) ||
-        !origin
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"), false);
-      }
-    },
+    origin: "*", // Allow all origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
