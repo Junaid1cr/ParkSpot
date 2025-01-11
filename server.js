@@ -15,7 +15,7 @@ pool.connect((err, client, release) => {
 
 app.use(
   cors({
-    origin: "*", // Allow all origins
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })

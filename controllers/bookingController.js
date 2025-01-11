@@ -45,11 +45,11 @@ const completeBooking = async (req, res) => {
 
 const getCurrentBooking = async (req, res) => {
   try {
-    const userId = req.user.id; // Assumes `req.user` is populated via authentication middleware
+    const userId = req.user.id;
     const activeBooking = await Booking.getUserActiveBooking(pool, userId);
 
     if (!activeBooking) {
-      return res.status(200).json(null); // Respond with null if no active booking exists
+      return res.status(200).json(null);
     }
 
     res.json({

@@ -1,6 +1,6 @@
 const pool = require("../configs/db");
 class ParkingSpot {
-  static async findNearby(pool, userLocation, radius = 5000) {
+  static async findNearby(pool, userLocation, radius = 10000) {
     const query = `
           SELECT *,
           ST_Distance(

@@ -11,14 +11,12 @@ const findParkingSpots = async (req, res) => {
 
     const userLocation = { lat: parseFloat(lat), lng: parseFloat(lng) };
 
-    // Fetch nearby parking spots
     const spots = await ParkingSpot.findNearby(
       pool,
       userLocation,
       parseFloat(radius)
     );
 
-    // Calculate routes and distances for each parking spot
     const spotsWithRoutes = await Promise.all(
       spots.map(async (spot) => {
         const destination = { lat: spot.latitude, lng: spot.longitude };
@@ -57,9 +55,9 @@ const findParkingSpots = async (req, res) => {
         case "cost":
           return a.cost_per_hour - b.cost_per_hour;
         case "time":
-          return a.duration - b.duration; // Sorting by duration in seconds
+          return a.duration - b.duration;
         default:
-          return a.distance - b.distance; // Sorting by distance in meters
+          return a.distance - b.distance;
       }
     });
 
